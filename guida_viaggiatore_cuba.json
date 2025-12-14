@@ -1,0 +1,456 @@
+{
+  "meta": {
+    "titolo": "Guida Pratica per il Viaggiatore a Cuba",
+    "versione": "1.0",
+    "ultimo_aggiornamento": "2024-12-08"
+  },
+  
+  "sezioni": [
+    {
+      "id": "elettricita",
+      "titolo": "⚡ Elettricità e Prese",
+      "icona": "⚡",
+      "contenuto": {
+        "voltaggio": "110V / 60Hz",
+        "tipo_prese": "Tipo A e B (americane - lamelle piatte)",
+        "adattatore_necessario": true,
+        "note": "Le prese italiane (tipo C/F/L) NON sono compatibili. È INDISPENSABILE portare un adattatore universale o specifico USA.",
+        "consigli": [
+          "Compra l'adattatore PRIMA di partire (difficile trovarlo a Cuba)",
+          "Se porti molti dispositivi, considera una ciabatta con adattatore",
+          "Alcuni hotel di lusso hanno prese europee, ma non contarci"
+        ],
+        "avviso_importante": "Il voltaggio a Cuba è 110V, mentre in Italia è 220V. La maggior parte dei caricabatterie moderni (telefoni, laptop) supportano 110-240V, ma controlla sempre!"
+      }
+    },
+    {
+      "id": "internet_sim",
+      "titolo": "📱 Internet e SIM Card",
+      "icona": "📱",
+      "contenuto": {
+        "operatore_unico": "ETECSA (monopolio statale)",
+        "sim_turisti": {
+          "nome": "Cubacel Tur",
+          "opzioni": [
+            {
+              "nome": "Cubacel Tur Plus",
+              "durata": "30 giorni",
+              "dati": "10 GB",
+              "minuti": "100",
+              "sms": "100",
+              "extra": "WhatsApp e Facebook illimitati",
+              "costo_indicativo": "€25-35",
+              "estendibile": "Fino a 90 giorni (ricariche da 30 giorni)"
+            },
+            {
+              "nome": "Cubacel Tur Básico",
+              "durata": "7 giorni",
+              "dati": "4 GB",
+              "minuti": "20",
+              "sms": "20",
+              "costo_indicativo": "€15-20",
+              "estendibile": "Fino a 90 giorni (ricariche da 7 giorni)"
+            }
+          ],
+          "dove_comprare": [
+            "Online (consigliato): preordina e ritira in aeroporto",
+            "Aeroporto José Martí L'Avana - Terminal 3, Sala C (24/7)",
+            "Aeroporto Varadero - stand ETECSA (24/7)",
+            "Aeroporti: Cayo Coco, Holguín, Camagüey (24/7)",
+            "Uffici ETECSA in tutto il paese (orari limitati)"
+          ],
+          "attivazione": "Componi *666 per attivare",
+          "verifica_saldo": "Componi *222# per verificare credito e dati",
+          "requisiti_telefono": "Telefono sbloccato, compatibile con bande 850/900/1800/2100 MHz"
+        },
+        "wifi_pubblico": {
+          "disponibilita": "Oltre 1000 hotspot WiFi in parchi e piazze",
+          "carte_nauta": {
+            "descrizione": "Carte prepagate per accedere al WiFi pubblico",
+            "durate": [
+              {"tempo": "30 minuti", "costo": "~12.50 CUP"},
+              {"tempo": "1 ora", "costo": "~25 CUP"},
+              {"tempo": "5 ore", "costo": "~125 CUP"}
+            ],
+            "dove_comprare": "Uffici ETECSA, hotel, aeroporti, venditori nelle zone WiFi"
+          },
+          "come_riconoscere": "Cerca gruppi di persone con telefoni in mano - lì c'è WiFi!"
+        },
+        "consigli": [
+          "Preordina la SIM online PRIMA di partire",
+          "Scarica mappe offline (Maps.me, Google Maps offline)",
+          "Scarica traduttore offline (Google Translate)",
+          "Installa VPN PRIMA di partire (alcuni siti sono bloccati)",
+          "WiFi negli hotel spesso lento e a pagamento"
+        ],
+        "app_utili": [
+          "Maps.me (mappe offline)",
+          "Google Translate (offline)",
+          "WhatsApp (funziona con SIM turistica)",
+          "Bajanda/TaxisCuba (se disponibili)"
+        ]
+      }
+    },
+    {
+      "id": "moneta_pagamenti",
+      "titolo": "💰 Moneta e Pagamenti",
+      "icona": "💰",
+      "contenuto": {
+        "moneta_ufficiale": {
+          "nome": "Peso Cubano (CUP)",
+          "simbolo": "CUP o $",
+          "cambio_ufficiale": "1 EUR ≈ 120 CUP (variabile)",
+          "banconote": ["1", "3", "5", "10", "20", "50", "100", "200", "500", "1000 CUP"],
+          "note": "Dal 2021 il CUC (Peso Convertibile) NON esiste più. Ignora vecchie guide che ne parlano."
+        },
+        "carte_accettate": {
+          "funzionano": [
+            "✅ Visa",
+            "✅ Visa Electron", 
+            "✅ Mastercard",
+            "✅ Postepay (ricaricabile)"
+          ],
+          "non_funzionano": [
+            "❌ American Express",
+            "❌ Diners Club",
+            "❌ Maestro (limitato)",
+            "❌ Carte emesse da banche USA"
+          ],
+          "commissioni": "3-4% su pagamenti e prelievi + commissioni banca",
+          "disponibilita_pos": "MOLTO LIMITATA - Solo grandi hotel, ristoranti statali, noleggi auto"
+        },
+        "dove_cambiare": [
+          {
+            "luogo": "CADECA (Casa de Cambio)",
+            "cambio": "Ufficiale ~120 CUP/EUR",
+            "commissione": "0% (eccetto USD: +10%)",
+            "consigliato": true
+          },
+          {
+            "luogo": "Banche",
+            "cambio": "Ufficiale ~120 CUP/EUR",
+            "commissione": "0% (eccetto USD: +10%)",
+            "note": "Spesso code lunghe"
+          },
+          {
+            "luogo": "Hotel",
+            "cambio": "Leggermente sfavorevole",
+            "note": "Comodo ma cambio peggiore"
+          },
+          {
+            "luogo": "Aeroporto",
+            "cambio": "Simile a CADECA",
+            "note": "Aperto 24/7"
+          },
+          {
+            "luogo": "Mercato nero (ILLEGALE)",
+            "cambio": "Fino a 2x il valore ufficiale",
+            "commissione": "Rischio truffa",
+            "consigliato": false,
+            "avviso": "⚠️ ILLEGALE - Rischi sanzioni"
+          }
+        ],
+        "carta_prepagata_mlc": {
+          "descrizione": "Carta prepagata per turisti da usare solo a Cuba",
+          "dove_comprarla": "CADECA, Banco de Crédito y Comercio (BANDEC), aeroporti",
+          "commissione": "~5 EUR",
+          "tagli": ["100", "200", "500 EUR"],
+          "utilizzo": "Molto limitato - solo alcuni negozi statali",
+          "consiglio": "Non indispensabile, meglio contanti"
+        },
+        "consigli_pratici": [
+          "💶 Porta EURO in contanti (meglio dei dollari - no commissione 10%)",
+          "💵 Evita USD se possibile (commissione 10%)",
+          "💳 Porta 2 carte diverse (Visa + Mastercard) per sicurezza",
+          "🏦 Preleva solo quando necessario (commissioni alte)",
+          "💰 Cuba è un paese sicuro, puoi girare con contanti",
+          "🏪 Pochi posti accettano carte - porta sempre contanti",
+          "💸 Cambia banconote piccole (difficile avere resto da 500-1000 CUP)"
+        ],
+        "budget_indicativo": "50-100 EUR/giorno a persona (medio-basso)"
+      }
+    },
+    {
+      "id": "trasporti",
+      "titolo": "🚕 Trasporti",
+      "icona": "🚕",
+      "contenuto": {
+        "taxi": {
+          "tipi": [
+            {
+              "nome": "Taxi Ufficiali (statali)",
+              "caratteristiche": "Auto moderne, tassametro, affidabili",
+              "costo": "~1 USD/km",
+              "dove_trovarli": "Aeroporti, hotel, stazioni"
+            },
+            {
+              "nome": "Taxi Collettivi (Almendrones)",
+              "caratteristiche": "Auto d'epoca americane, percorsi fissi, economici",
+              "costo": "10-20 CUP a persona",
+              "note": "Esperienza autentica ma solo percorsi popolari"
+            },
+            {
+              "nome": "Bicitaxi / Coco-taxi",
+              "caratteristiche": "Tricicli, brevi distanze turistiche",
+              "costo": "Trattare prima (5-20 CUP)",
+              "note": "Solo per brevi tratte in centro"
+            }
+          ],
+          "app_taxi": {
+            "disponibili": ["Bajanda", "TaxisCuba"],
+            "note": "Disponibilità limitata, funzionano solo in città principali",
+            "consiglio": "Meglio fermare taxi in strada o chiedere in hotel"
+          },
+          "consigli": [
+            "Concorda SEMPRE il prezzo PRIMA di salire",
+            "Chiedi all'hotel di chiamarti un taxi fidato",
+            "Porta contanti (pochi taxi accettano carte)",
+            "Numeri taxi verranno aggiunti in futuro"
+          ]
+        },
+        "autobus": {
+          "viazul": {
+            "descrizione": "Autobus turistici per tratte lunghe",
+            "caratteristiche": "Aria condizionata, comodi, puntuali",
+            "prenotazione": "Online su viazul.com (consigliato)",
+            "costo": "Economico (~10-30 EUR L'Avana-Varadero)",
+            "note": "Prenota in anticipo in alta stagione"
+          },
+          "autobus_locali": {
+            "descrizione": "Guaguas - autobus locali cubani",
+            "costo": "Pochi CUP",
+            "note": "Poco pratici per turisti, spesso affollati"
+          }
+        },
+        "noleggio_auto": {
+          "compagnie": ["Rex", "Cubacar", "Havanautos"],
+          "costo": "50-80 EUR/giorno",
+          "requisiti": [
+            "Patente italiana valida",
+            "Carta di credito (Visa/Mastercard)",
+            "Età minima: 21 anni"
+          ],
+          "benzina": {
+            "tipo": "Especial (circa 1.30 USD/litro)",
+            "pagamento": "Carte di credito nelle stazioni abilitate",
+            "disponibilita": "Limitata fuori città - fai sempre il pieno"
+          },
+          "consigli": [
+            "Strade in condizioni variabili",
+            "Poca segnaletica - porta GPS/mappe offline",
+            "Controlla bene l'auto prima di partire",
+            "Assicurazione completa consigliata"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ambasciata",
+      "titolo": "🏛️ Ambasciata Italiana",
+      "icona": "🏛️",
+      "contenuto": {
+        "nome": "Ambasciata d'Italia a L'Avana",
+        "indirizzo": "5 Avenida n. 402, esq. Calle 4, Miramar - Playa, La Habana, Cuba",
+        "telefono": "+53 7 2045615",
+        "telefoni_aggiuntivi": ["+53 7 2045616", "+53 7 2045618", "+53 7 2045621"],
+        "fax": "+53 7 2045659",
+        "email_consolare": "consolare.ambavana@esteri.it",
+        "email_consolare2": "consolare2.avana@esteri.it",
+        "sito_web": "https://amblavana.esteri.it/",
+        "orari": {
+          "lunedi": "08:30 - 16:00",
+          "martedi": "08:30 - 16:00",
+          "mercoledi": "08:30 - 16:00",
+          "giovedi": "08:30 - 16:00",
+          "venerdi": "08:30 - 16:00",
+          "sabato": "Chiuso",
+          "domenica": "Chiuso"
+        },
+        "servizi": [
+          "Assistenza consolare emergenze",
+          "Rilascio/rinnovo passaporti",
+          "Certificati e legalizzazioni",
+          "Assistenza in caso di arresto/incidente",
+          "Rimpatrio d'emergenza"
+        ],
+        "emergenza_24h": "In caso di emergenza fuori orario, chiama il numero principale - c'è un servizio di reperibilità",
+        "consigli": [
+          "Registra il tuo viaggio su Unità di Crisi Viaggiare Sicuri",
+          "Porta sempre fotocopia del passaporto separata dall'originale",
+          "In caso di smarrimento passaporto, vai subito in ambasciata"
+        ]
+      }
+    },
+    {
+      "id": "emergenze",
+      "titolo": "🆘 Numeri di Emergenza",
+      "icona": "🆘",
+      "contenuto": {
+        "numeri_emergenza": [
+          {"servizio": "Polizia", "numero": "106", "icona": "🚓"},
+          {"servizio": "Ambulanza", "numero": "104", "icona": "🚑"},
+          {"servizio": "Vigili del Fuoco", "numero": "105", "icona": "🚒"}
+        ],
+        "assistenza_turistica": {
+          "nome": "ASISTUR",
+          "descrizione": "Assicurazione e assistenza per turisti",
+          "telefono": "+53 7 866 4499",
+          "servizi": [
+            "Assistenza medica turisti",
+            "Assistenza legale",
+            "Reintegro spese mediche",
+            "Assistenza per smarrimento bagagli"
+          ],
+          "uffici": "Presenti in principali città turistiche"
+        },
+        "unita_crisi_italia": {
+          "nome": "Unità di Crisi - Farnesina",
+          "telefono": "+39 06 36225",
+          "email": "unita.crisi@esteri.it",
+          "quando_chiamare": "Solo per emergenze gravi che richiedono intervento consolare italiano"
+        },
+        "consigli_sicurezza": [
+          "Cuba è generalmente molto sicura per i turisti",
+          "Crimini violenti sono rari",
+          "Attenzione a piccoli furti e borseggiatori nelle zone turistiche",
+          "Non lasciare oggetti di valore in vista in auto o spiaggia",
+          "Evita di mostrare grandi quantità di denaro"
+        ]
+      }
+    },
+    {
+      "id": "salute",
+      "titolo": "🏥 Salute e Assicurazione",
+      "icona": "🏥",
+      "contenuto": {
+        "assicurazione_obbligatoria": {
+          "obbligatoria": true,
+          "descrizione": "L'assicurazione medica di viaggio è OBBLIGATORIA per entrare a Cuba",
+          "copertura_minima": "Include spese mediche e rimpatrio sanitario",
+          "dove_comprarla": [
+            "Compagnie assicurative italiane",
+            "Agenzia di viaggio",
+            "In aeroporto (più costosa)"
+          ],
+          "controlli": "Potrebbero chiederti la polizza all'arrivo",
+          "costo_indicativo": "30-50 EUR per 2 settimane"
+        },
+        "sistema_sanitario": {
+          "pubblico": "Gratuito per cubani, a pagamento per turisti",
+          "privato": "Cliniche internazionali per turisti",
+          "qualita": "Buona nelle strutture turistiche, variabile altrove",
+          "costi": "Relativamente bassi ma richiesto pagamento anticipato"
+        },
+        "farmacie": {
+          "disponibilita": "Limitate fuori città principali",
+          "consiglio": "Porta tutti i medicinali che potrebbero servirti dall'Italia",
+          "nota": "Scarsità di farmaci comuni - porta scorta personale"
+        },
+        "vaccinazioni": {
+          "obbligatorie": "Nessuna",
+          "consigliate": [
+            "Epatite A e B",
+            "Tetano (richiamo)",
+            "Tifo"
+          ],
+          "note": "Consulta il medico 4-6 settimane prima della partenza"
+        },
+        "acqua_cibo": {
+          "acqua": "NON bere acqua del rubinetto - solo imbottigliata",
+          "ghiaccio": "Evita ghiaccio nelle bevande (spesso fatto con acqua di rubinetto)",
+          "cibo": "Ristoranti turistici generalmente sicuri",
+          "frutta": "Sbucciala sempre",
+          "verdura": "Evita verdure crude se non ben lavate"
+        },
+        "medicinali_da_portare": [
+          "Antidiarroici",
+          "Antidolorifici/Antipiretici",
+          "Antibiotici (dietro prescrizione medica)",
+          "Cerotti e disinfettanti",
+          "Repellente per zanzare",
+          "Crema solare alta protezione",
+          "Farmaci personali (scorta per tutto il viaggio + extra)"
+        ],
+        "sole_clima": {
+          "sole_forte": "Protezione solare 50+ indispensabile",
+          "clima": "Caldo e umido tutto l'anno",
+          "stagione_piogge": "Maggio-Ottobre",
+          "uragani": "Giugno-Novembre (picco Settembre-Ottobre)"
+        }
+      }
+    },
+    {
+      "id": "consigli_pratici",
+      "titolo": "⚠️ Consigli e Avvisi",
+      "icona": "⚠️",
+      "contenuto": {
+        "cosa_sapere": [
+          "Cuba è molto sicura, ma usa sempre buon senso",
+          "Sistema economico particolare - aspettati code e scarsità",
+          "Doppia economia (CUP e negozi in valuta estera)",
+          "I cubani sono generalmente amichevoli e disponibili",
+          "Ritmo di vita lento - porta pazienza"
+        ],
+        "truffe_comuni": [
+          {
+            "tipo": "Finti sigari cubani",
+            "descrizione": "Venditori per strada offrono \"sigari originali\" a prezzi bassi",
+            "come_evitare": "Compra solo in negozi autorizzati con ricevuta fiscale"
+          },
+          {
+            "tipo": "Cambio moneta truffaldino",
+            "descrizione": "Scambio di CUC con CUP o cambio sfavorevole",
+            "come_evitare": "Cambia solo in CADECA o banche, conta sempre bene"
+          },
+          {
+            "tipo": "Taxi senza tassametro",
+            "descrizione": "Prezzi gonfiati per turisti",
+            "come_evitare": "Concorda prezzo prima di salire, usa taxi ufficiali"
+          },
+          {
+            "tipo": "Ristoranti trappola",
+            "descrizione": "Ti portano in ristoranti dove prendono commissione",
+            "come_evitare": "Scegli tu dove mangiare, non seguire sconosciuti"
+          }
+        ],
+        "cosa_non_fare": [
+          "❌ Non fotografare militari, polizia o installazioni militari",
+          "❌ Non criticare il governo in pubblico",
+          "❌ Non comprare/usare droghe (pene severissime)",
+          "❌ Non portare/esportare materiale sovversivo",
+          "❌ Non cambiare soldi per strada",
+          "❌ Non comprare sigari/rum da venditori ambulanti",
+          "❌ Non guidare di notte se non necessario (strade buie)"
+        ],
+        "cosa_portare": [
+          "✅ Adattatore corrente USA",
+          "✅ Contanti EUR (almeno 50-60% del budget)",
+          "✅ 2 carte di credito diverse",
+          "✅ Medicinali personali + scorta",
+          "✅ Repellente zanzare",
+          "✅ Crema solare",
+          "✅ Torcia/powerbank",
+          "✅ Fotocopia passaporto",
+          "✅ Polizza assicurativa stampata"
+        ],
+        "mance": {
+          "ristoranti": "10% del conto (se non incluso)",
+          "taxi": "10-20 CUP",
+          "guide_turistiche": "5-10 CUP/ora",
+          "hotel": "1-2 CUP/giorno per pulizie",
+          "note": "Le mance sono apprezzate - i salari sono bassi"
+        },
+        "lingua": {
+          "ufficiale": "Spagnolo",
+          "inglese": "Parlato nelle zone turistiche",
+          "consiglio": "Impara frasi base in spagnolo - molto apprezzato"
+        },
+        "internet_censura": {
+          "siti_bloccati": "Alcuni siti occidentali potrebbero essere lenti o bloccati",
+          "vpn": "Consigliata (installa PRIMA di partire)",
+          "social": "Facebook, WhatsApp funzionano"
+        }
+      }
+    }
+  ]
+}

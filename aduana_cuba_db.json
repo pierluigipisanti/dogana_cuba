@@ -1,0 +1,963 @@
+{
+  "meta": {
+    "titolo": "Database Dogana Cuba - Importazioni Non Commerciali",
+    "versione": "1.0",
+    "ultimo_aggiornamento": "2024-12-08",
+    "fonti": [
+      "Gaceta Oficial No. 57 del 2024",
+      "Resolución 175/2022 de Aduana General de la República",
+      "Resolución 176/2022 de Aduana General de la República",
+      "Resolución 211/2024 - Ministerio de Finanzas y Precios",
+      "Sito ufficiale: https://www.aduana.gob.cu/"
+    ],
+    "note_legali": "Questo database è stato compilato da fonti ufficiali pubbliche della Repubblica di Cuba. Le informazioni sono aggiornate alla data indicata. Verificare sempre sul sito ufficiale della dogana per eventuali modifiche."
+  },
+  
+  "regole_generali": {
+    "limite_totale_importazione": {
+      "valore_usd": 1000,
+      "descrizione": "Limite massimo di valore per importazioni non commerciali"
+    },
+    "effetti_personali": {
+      "peso_kg": 25,
+      "descrizione": "Effetti personali esenti da pagamento",
+      "include": [
+        "Vestiti",
+        "Scarpe",
+        "Prodotti per l'igiene personale (quantità ragionevoli)",
+        "1 telefono cellulare",
+        "1 laptop",
+        "1 fotocamera",
+        "1 lettore multimediale portatile"
+      ]
+    },
+    "limite_peso_canale_verde": {
+      "peso_kg": 30,
+      "descrizione": "Peso massimo per passare al canale verde (senza controlli fisici obbligatori)"
+    },
+    "dichiarazione_valuta": {
+      "limite_usd": 5000,
+      "descrizione": "Devi dichiarare se porti più di 5000 USD o equivalente in altre valute"
+    },
+    "esenzioni_temporanee": {
+      "valido_fino": "2024-09-30",
+      "nota": "Le date di validità vengono periodicamente prorogate. Verificare sul sito ufficiale.",
+      "categorie_esenti": [
+        {
+          "categoria": "Medicinali",
+          "limite": "illimitato",
+          "condizioni": "Devono essere in valigie separate dal resto del bagaglio"
+        },
+        {
+          "categoria": "Alimenti",
+          "limite": "illimitato",
+          "condizioni": "Devono essere in valigie separate dal resto del bagaglio"
+        },
+        {
+          "categoria": "Prodotti per l'igiene personale e della casa",
+          "limite": "illimitato",
+          "condizioni": "Devono essere in valigie separate dal resto del bagaglio"
+        }
+      ]
+    },
+    "metodo_valorazione_miscellanee": {
+      "descrizione": "Per articoli classificati come miscellanee si usa il metodo peso/valore",
+      "equivalenza": "1 kg = 10 USD",
+      "include": [
+        "Calzature",
+        "Abbigliamento",
+        "Alimenti (se non nella categoria esente)",
+        "Articoli per l'igiene",
+        "Bigiotteria",
+        "Biancheria",
+        "Profumeria e simili"
+      ]
+    }
+  },
+
+  "categorie": [
+    {
+      "id": "elettronica_informatica",
+      "nome_it": "Elettronica e Informatica",
+      "nome_es": "Electrónica e Informática",
+      "icona": "💻",
+      "articoli": [
+        {
+          "id": "computer_laptop",
+          "nome_it": "Computer / Laptop / Tablet",
+          "nome_es": "Computadora / Laptop / Tablet",
+          "sinonimi": ["pc", "portatile", "notebook", "desktop", "tablet", "ipad"],
+          "quantita_max": 3,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 3 apparecchi di tipo informatico indipendentemente dalla tipologia (desktop, laptop, tablet, e-reader). Include anche dispositivi per lettura digitale.",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "telefono_cellulare",
+          "nome_it": "Telefono cellulare / Smartphone",
+          "nome_es": "Teléfono móvil / Smartphone",
+          "sinonimi": ["cellulare", "telefono", "mobile", "smartphone", "iphone"],
+          "quantita_max": 5,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 5 telefoni cellulari o smartphone",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "accessori_computer",
+          "nome_it": "Accessori per computer",
+          "nome_es": "Accesorios de computadora",
+          "sinonimi": ["mouse", "tastiera", "cuffie", "webcam", "periferiche"],
+          "quantita_max": 3,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 3 articoli tra accessori o periferici (mouse, tastiere, cuffie, ecc.)",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "dispositivi_telecomunicazioni",
+          "nome_it": "Dispositivi per telecomunicazioni e rete",
+          "nome_es": "Dispositivos de telecomunicaciones y red",
+          "sinonimi": ["router", "modem", "switch", "access point"],
+          "quantita_max": 3,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 3 articoli per telecomunicazioni e dispositivi di rete",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "memorie_componenti",
+          "nome_it": "Memorie flash, componenti e parti",
+          "nome_es": "Memorias flash, componentes y partes",
+          "sinonimi": ["usb", "pendrive", "hard disk", "ssd", "scheda memoria"],
+          "quantita_max": "variabile",
+          "metodo_valorazione": "peso/valore",
+          "unita": "kg",
+          "condizioni": "Si applica il metodo alternativo peso/valore purché ci sia diversità nei prodotti",
+          "note": "Per memorie flash, parti e pezzi di computer, telefonia mobile e fissa, stampanti, fotocopiatrici e altri dispositivi informatici",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "stampanti_fotocopiatrici",
+          "nome_it": "Stampanti e fotocopiatrici",
+          "nome_es": "Impresoras y fotocopiadoras",
+          "sinonimi": ["printer", "multifunzione", "scanner"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Incluse nel limite generale degli elettrodomestici (2 dello stesso tipo)",
+          "fonte": "Resolución 175/2022"
+        }
+      ]
+    },
+    {
+      "id": "elettrodomestici",
+      "nome_it": "Elettrodomestici",
+      "nome_es": "Electrodomésticos",
+      "icona": "🏠",
+      "regola_generale": {
+        "descrizione": "Si possono importare fino a 2 elettrodomestici dello stesso tipo, purché il loro valore combinato non superi il limite di importazione stabilito",
+        "quantita_max_per_tipo": 2,
+        "condizione": "Deve esserci varietà negli elettrodomestici"
+      },
+      "articoli": [
+        {
+          "id": "televisore",
+          "nome_it": "Televisore",
+          "nome_es": "Televisor",
+          "sinonimi": ["tv", "smart tv", "televisione"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 televisori dello stesso tipo",
+          "fonte": "Resolución 175/2022"
+        },
+        {
+          "id": "frigorifero",
+          "nome_it": "Frigorifero",
+          "nome_es": "Refrigerador",
+          "sinonimi": ["frigo", "freezer", "congelatore"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 frigoriferi",
+          "fonte": "Resolución 175/2022"
+        },
+        {
+          "id": "lavatrice",
+          "nome_it": "Lavatrice",
+          "nome_es": "Lavadora",
+          "sinonimi": ["lavabiancheria"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 lavatrici",
+          "fonte": "Resolución 175/2022"
+        },
+        {
+          "id": "condizionatore",
+          "nome_it": "Condizionatore d'aria",
+          "nome_es": "Aire acondicionado",
+          "sinonimi": ["climatizzatore", "ac"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 condizionatori",
+          "fonte": "Resolución 175/2022"
+        },
+        {
+          "id": "ventilatore",
+          "nome_it": "Ventilatore",
+          "nome_es": "Ventilador",
+          "sinonimi": ["ventola"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 ventilatori dello stesso tipo",
+          "fonte": "Resolución 175/2022"
+        },
+        {
+          "id": "forno_microonde",
+          "nome_it": "Forno a microonde",
+          "nome_es": "Horno microondas",
+          "sinonimi": ["microonde", "microondas"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "consumo_max_watts": 2000,
+          "valore_incluso_in_limite_generale": true,
+          "note": "Consentiti forni a microonde fino a 2000 watts. Altri forni elettrici sono proibiti salvo quelli a induzione.",
+          "fonte": "Resolución 175/2022"
+        },
+        {
+          "id": "cucina_induzione",
+          "nome_it": "Cucina/Fornello a induzione",
+          "nome_es": "Cocina de inducción",
+          "sinonimi": ["piano cottura", "fornello", "piastra"],
+          "quantita_max": 2,
+          "potenza_max_watts": 1500,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Consentite solo cucine e fornelli a induzione vitroceramica fino a 1500 watts. Altri tipi di cucine elettriche sono PROIBITI.",
+          "importante": "ATTENZIONE: Cucine e fornelli elettrici non a induzione sono VIETATI",
+          "fonte": "Resolución 175/2022, Anexo IV - Artículos prohibidos"
+        },
+        {
+          "id": "impianto_audio",
+          "nome_it": "Impianto audio / Stereo",
+          "nome_es": "Equipo de sonido",
+          "sinonimi": ["stereo", "casse", "altoparlanti", "soundbar"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 impianti audio",
+          "fonte": "Resolución 175/2022"
+        },
+        {
+          "id": "lettore_dvd",
+          "nome_it": "Lettore DVD/Blu-ray",
+          "nome_es": "Reproductor DVD",
+          "sinonimi": ["dvd player", "blu-ray"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 lettori DVD o simili",
+          "fonte": "Resolución 175/2022"
+        },
+        {
+          "id": "console_videogiochi",
+          "nome_it": "Console per videogiochi",
+          "nome_es": "Consola de videojuegos",
+          "sinonimi": ["playstation", "xbox", "nintendo", "ps5", "switch"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 console (es: 2 PlayStation, 2 Xbox, ecc.)",
+          "fonte": "Resolución 175/2022"
+        },
+        {
+          "id": "generatore_elettrico",
+          "nome_it": "Generatore elettrico / Gruppo elettrogeno",
+          "nome_es": "Planta eléctrica",
+          "sinonimi": ["gruppo elettrogeno", "generatore"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 generatori elettrici. Beneficio prorogato fino al 30 settembre 2024 (Resolución 212/2024)",
+          "fonte": "Resolución 175/2022, Resolución 212/2024"
+        },
+        {
+          "id": "componenti_elettrodomestici",
+          "nome_it": "Componenti e accessori per elettrodomestici",
+          "nome_es": "Componentes y accesorios de electrodomésticos",
+          "sinonimi": ["ricambi", "parti di ricambio", "accessori"],
+          "metodo_valorazione": "peso/valore",
+          "unita": "kg",
+          "condizioni": "Si applica il metodo peso/valore purché ci sia diversità nei prodotti",
+          "note": "Per parti e accessori di elettrodomestici, deve esserci varietà",
+          "fonte": "Resolución 175/2022"
+        }
+      ]
+    },
+    {
+      "id": "fotografia_video",
+      "nome_it": "Fotografia e Video",
+      "nome_es": "Fotografía y Video",
+      "icona": "📷",
+      "articoli": [
+        {
+          "id": "fotocamera",
+          "nome_it": "Fotocamera / Macchina fotografica",
+          "nome_es": "Cámara fotográfica",
+          "sinonimi": ["camera", "reflex", "mirrorless", "compatta"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 fotocamere",
+          "fonte": "Resolución 175/2022"
+        },
+        {
+          "id": "videocamera",
+          "nome_it": "Videocamera",
+          "nome_es": "Cámara de video",
+          "sinonimi": ["camcorder", "video camera"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 videocamere",
+          "fonte": "Resolución 175/2022"
+        },
+        {
+          "id": "drone",
+          "nome_it": "Drone / Aeromobile senza pilota",
+          "nome_es": "Aeronave no tripulada / Dron",
+          "sinonimi": ["quadricottero", "uav"],
+          "quantita_max": 1,
+          "autorizzazione_richiesta": true,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "RICHIEDE AUTORIZZAZIONE PREVENTIVA dall'autorità aeronautica cubana. Non è possibile importare droni senza permesso.",
+          "importante": "ATTENZIONE: Necessaria autorizzazione preventiva",
+          "fonte": "Resolución 175/2022, Legislazione aeronautica cubana"
+        },
+        {
+          "id": "accessori_foto",
+          "nome_it": "Accessori fotografici",
+          "nome_es": "Accesorios fotográficos",
+          "sinonimi": ["treppiede", "obiettivi", "lenti", "flash", "luci"],
+          "metodo_valorazione": "peso/valore",
+          "condizioni": "Si applica il metodo peso/valore purché ci sia diversità",
+          "note": "Include treppiedi, obiettivi, attrezzatura di illuminazione, ecc.",
+          "fonte": "Resolución 175/2022"
+        }
+      ]
+    },
+    {
+      "id": "ferramenta",
+      "nome_it": "Ferramenta e Utensili",
+      "nome_es": "Ferretería y Herramientas",
+      "icona": "🔧",
+      "articoli": [
+        {
+          "id": "utensili_generici",
+          "nome_it": "Utensili e articoli di ferramenta",
+          "nome_es": "Herramientas y artículos de ferretería",
+          "sinonimi": ["attrezzi", "chiavi", "martello", "cacciavite", "pinze"],
+          "quantita_max": 5,
+          "valore_max_per_articolo_usd": 50,
+          "unita": "pezzi",
+          "note": "Fino a 5 articoli per categoria se valore ≤ 50 USD ciascuno. Se valore > 50 USD (inclusi set), max 3 articoli",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "pitture_vernici",
+          "nome_it": "Pitture, vernici, pigmenti e diluenti",
+          "nome_es": "Pinturas, barnices, pigmentos y diluyentes",
+          "sinonimi": ["vernice", "smalto", "pittura", "diluente"],
+          "quantita_max": 20,
+          "unita": "litri",
+          "note": "La somma totale del contenuto dei contenitori non deve superare 20 litri, indipendentemente dal formato",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "cavi_elettrici",
+          "nome_it": "Cavi e fili elettrici",
+          "nome_es": "Cables y alambres eléctricos",
+          "sinonimi": ["filo elettrico", "cavo", "bobina"],
+          "quantita_max": 3,
+          "unita": "bobine/rocchetti",
+          "lunghezza_max_per_bobina": 100,
+          "unita_lunghezza": "metri",
+          "note": "Fino a 3 bobine o rocchetti di massimo 100 metri ciascuno",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "tubi_flessibili",
+          "nome_it": "Tubi flessibili / Manichette",
+          "nome_es": "Mangueras",
+          "sinonimi": ["tubo", "manichetta", "tubo da giardino"],
+          "quantita_max": 50,
+          "unita": "metri",
+          "note": "Per giardinaggio, pulizia o altri usi simili, fino a 50 metri totali",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "tappeti",
+          "nome_it": "Tappeti / Moquette",
+          "nome_es": "Alfombras",
+          "sinonimi": ["tappeto", "moquette"],
+          "quantita_max": 50,
+          "unita": "metri quadrati",
+          "note": "Fino a 50 metri quadrati totali",
+          "fonte": "Resolución 175/2022, Anexo III"
+        }
+      ]
+    },
+    {
+      "id": "materiali_costruzione",
+      "nome_it": "Materiali da Costruzione",
+      "nome_es": "Materiales de Construcción",
+      "icona": "🏗️",
+      "articoli": [
+        {
+          "id": "piastrelle_pavimenti",
+          "nome_it": "Piastrelle per rivestimenti e pavimenti",
+          "nome_es": "Piezas de enchape y piso",
+          "sinonimi": ["piastrelle", "mattonelle", "ceramiche"],
+          "quantita_max": 50,
+          "unita": "metri quadrati",
+          "note": "Fino a 50 metri quadrati",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "profili_giunzione",
+          "nome_it": "Profili di giunzione, cornici e simili",
+          "nome_es": "Matajuntas, cenefas y similares",
+          "sinonimi": ["battiscopa", "profili", "cornici"],
+          "quantita_max": 50,
+          "unita": "metri lineari",
+          "note": "Fino a 50 metri lineari",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "manufatti_costruzione",
+          "nome_it": "Manufatti per edilizia",
+          "nome_es": "Manufacturas para uso de la construcción",
+          "sinonimi": ["articoli edili", "materiali costruzione"],
+          "quantita_max": 50,
+          "unita": "pezzi",
+          "note": "Fino a 50 unità",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "ferramenta_costruzione",
+          "nome_it": "Ferramenta e altri materiali da costruzione",
+          "nome_es": "Herrajes y demás materiales de construcción",
+          "sinonimi": ["ferramenta edile", "accessori costruzione"],
+          "quantita_max": 10,
+          "unita": "pezzi",
+          "note": "Fino a 10 unità",
+          "fonte": "Resolución 175/2022, Anexo III"
+        }
+      ]
+    },
+    {
+      "id": "veicoli_mobilita",
+      "nome_it": "Veicoli e Mobilità",
+      "nome_es": "Vehículos y Movilidad",
+      "icona": "🚲",
+      "articoli": [
+        {
+          "id": "biciclette",
+          "nome_it": "Biciclette (tradizionali, elettriche, a pedalata assistita)",
+          "nome_es": "Bicicletas (tradicionales, eléctricas, de pedaleo asistido)",
+          "sinonimi": ["bici", "bicicletta elettrica", "e-bike"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 biciclette di qualsiasi tipo (tradizionali, elettriche o a pedalata assistita)",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "monopattini_elettrici",
+          "nome_it": "Monopattini elettrici e simili",
+          "nome_es": "Patinetas eléctricas o similares",
+          "sinonimi": ["scooter elettrico", "hoverboard"],
+          "quantita_max": 2,
+          "unita": "pezzi",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Fino a 2 monopattini elettrici o dispositivi simili",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "ciclomotori_elettrici",
+          "nome_it": "Ciclomotori o motociclette elettriche",
+          "nome_es": "Ciclomotores o motocicletas eléctricas",
+          "sinonimi": ["moto elettrica", "scooter elettrico"],
+          "quantita_max_bagaglio": 2,
+          "quantita_max_spedizione": 1,
+          "unita": "pezzi",
+          "capacita_max": "2 posti",
+          "valore_incluso_in_limite_generale": true,
+          "note": "Come bagaglio passeggeri: max 2. Come spedizione: max 1. Capacità massima 2 posti.",
+          "fonte": "Resolución 28/2023, Resolución 175/2022"
+        },
+        {
+          "id": "parti_veicoli",
+          "nome_it": "Parti e accessori per veicoli",
+          "nome_es": "Partes y accesorios para vehículos",
+          "sinonimi": ["ricambi auto", "pezzi di ricambio"],
+          "quantita": "variabile",
+          "condizioni": "Nei limiti della normativa e in quantità necessaria per riparazione e manutenzione di un veicolo",
+          "note": "È possibile importare parti e accessori per veicoli purché la quantità non sia superiore a quella necessaria per la riparazione e manutenzione di un veicolo",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "armi_pneumatiche",
+          "nome_it": "Armi pneumatiche",
+          "nome_es": "Armas neumáticas",
+          "sinonimi": ["pistola ad aria compressa", "carabina"],
+          "quantita_max": 1,
+          "calibro_max": "4.5mm",
+          "frequenza": "una volta sola",
+          "valore_minimo_usd": 500,
+          "autorizzazione_richiesta": true,
+          "note": "RICHIEDE AUTORIZZAZIONE. Solo armi pneumatiche con proiettili di 4.5 mm o minori. Importabile una sola volta per un valore di riferimento non inferiore a 500 USD.",
+          "importante": "ATTENZIONE: Necessaria autorizzazione e requisiti legali specifici",
+          "fonte": "Resolución 175/2022, Anexo III"
+        }
+      ]
+    },
+    {
+      "id": "mobili_arredamento",
+      "nome_it": "Mobili e Arredamento",
+      "nome_es": "Muebles y Decoración",
+      "icona": "🛋️",
+      "articoli": [
+        {
+          "id": "mobili_generici",
+          "nome_it": "Mobili (generici)",
+          "nome_es": "Muebles (generales)",
+          "sinonimi": ["arredamento", "mobilia"],
+          "quantita_max": 5,
+          "valore_max_per_articolo_usd": 50,
+          "unita": "pezzi",
+          "note": "Fino a 5 mobili se valore ≤ 50 USD ciascuno. Se valore > 50 USD o se fanno parte di un insieme, max 3 pezzi",
+          "condizioni": "La quantità dipende dal numero di stanze della casa di destinazione",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "letti_materassi",
+          "nome_it": "Letti e materassi",
+          "nome_es": "Camas y colchones",
+          "sinonimi": ["letto", "materasso"],
+          "quantita_max": "secondo mobili importati",
+          "unita": "pezzi",
+          "note": "Se si importano mobili o set che includono letti o culle, è consentita anche l'importazione dei relativi materassi",
+          "fonte": "Resolución 175/2022, Anexo III"
+        },
+        {
+          "id": "mobili_neonati",
+          "nome_it": "Mobili per neonati e bambini",
+          "nome_es": "Mobiliario para bebés",
+          "sinonimi": ["culla", "passeggino", "box", "dondolo"],
+          "quantita_max": 3,
+          "unita": "pezzi per tipo",
+          "note": "Fino a 3 unità per ogni tipo (culle, passeggini, box, dondoli, girelli)",
+          "fonte": "Resolución 175/2022, Anexo III"
+        }
+      ]
+    },
+    {
+      "id": "biancheria_tessile",
+      "nome_it": "Biancheria e Tessile per la Casa",
+      "nome_es": "Lencería y Textil para el Hogar",
+      "icona": "🛏️",
+      "articoli": [
+        {
+          "id": "lenzuola_coperte",
+          "nome_it": "Lenzuola, asciugamani, coperte, cuscini",
+          "nome_es": "Sábanas, toallas, frazadas, almohadas",
+          "sinonimi": ["biancheria letto", "asciugamani", "tovaglie"],
+          "metodo_valorazione": "secondo listino",
+          "note": "Valori doganali specifici secondo tipo e quantità. Limiti per importazione non commerciale.",
+          "fonte": "Resolución 175/2022, Capitolo 7"
+        }
+      ]
+    },
+    {
+      "id": "articoli_cucina",
+      "nome_it": "Articoli da Cucina e per la Casa",
+      "nome_es": "Artículos de Cocina y Hogar",
+      "icona": "🍽️",
+      "articoli": [
+        {
+          "id": "stoviglie_posate",
+          "nome_it": "Stoviglie, posate e utensili da cucina",
+          "nome_es": "Vajillas, cubiertos y utensilios de cocina",
+          "sinonimi": ["piatti", "bicchieri", "coltelli", "forchette", "pentole"],
+          "metodo_valorazione": "secondo listino",
+          "note": "Include set di coltelli e posate, utensili da cucina come mestoli e schiumarole, regolatori e misuratori di gas, scope, piatti, stoviglie",
+          "fonte": "Resolución 175/2022, Capitolo 8"
+        }
+      ]
+    },
+    {
+      "id": "abbigliamento",
+      "nome_it": "Abbigliamento e Accessori",
+      "nome_es": "Ropa y Accesorios",
+      "icona": "👔",
+      "articoli": [
+        {
+          "id": "abbigliamento_generico",
+          "nome_it": "Abbigliamento (vestiti, biancheria intima, accessori)",
+          "nome_es": "Ropa (vestidos, ropa interior, accesorios)",
+          "sinonimi": ["vestiti", "magliette", "pantaloni", "gonna", "camicia"],
+          "metodo_valorazione": "peso/valore (miscellanee)",
+          "equivalenza": "1 kg = 10 USD",
+          "note": "Include biancheria intima femminile e maschile, abbigliamento per donne e uomini, abiti da sposa, costumi, e accessori come cappelli, foulard e occhiali",
+          "fonte": "Resolución 175/2022, Capitolo 11"
+        },
+        {
+          "id": "calzature",
+          "nome_it": "Calzature",
+          "nome_es": "Calzado",
+          "sinonimi": ["scarpe", "sandali", "stivali", "ciabatte"],
+          "metodo_valorazione": "peso/valore (miscellanee)",
+          "equivalenza": "1 kg = 10 USD",
+          "note": "Include calzature femminili e maschili di diversi tipi (eleganti, sportive, infradito, scarpe da ginnastica)",
+          "fonte": "Resolución 175/2022, Capitolo 12"
+        },
+        {
+          "id": "borse_accessori",
+          "nome_it": "Borse, zaini, valigie, cinture",
+          "nome_es": "Bolsos, mochilas, maletas, cinturones",
+          "sinonimi": ["borsa", "zaino", "valigia", "cintura", "portafoglio"],
+          "metodo_valorazione": "peso/valore (miscellanee)",
+          "equivalenza": "1 kg = 10 USD",
+          "note": "Articoli di pelletteria e accessori",
+          "fonte": "Resolución 175/2022, Capitolo 12"
+        }
+      ]
+    },
+    {
+      "id": "neonati_bambini",
+      "nome_it": "Articoli per Neonati e Bambini",
+      "nome_es": "Artículos para Bebés y Niños",
+      "icona": "👶",
+      "articoli": [
+        {
+          "id": "abbigliamento_neonati",
+          "nome_it": "Abbigliamento per neonati e bambini",
+          "nome_es": "Ropa para bebés y niños",
+          "sinonimi": ["tutine", "body", "vestitini"],
+          "metodo_valorazione": "secondo listino",
+          "note": "Include vestiti, pannolini, biancheria da letto",
+          "fonte": "Resolución 175/2022, Capitolo 13"
+        },
+        {
+          "id": "giocattoli",
+          "nome_it": "Giocattoli",
+          "nome_es": "Juguetes",
+          "sinonimi": ["giochi", "pupazzi", "bambole"],
+          "metodo_valorazione": "peso/valore se miscellanei",
+          "note": "Giocattoli per bambini",
+          "fonte": "Resolución 175/2022, Capitolo 13"
+        }
+      ]
+    },
+    {
+      "id": "igiene_cosmetici",
+      "nome_it": "Prodotti per l'Igiene e Cosmetici",
+      "nome_es": "Productos de Higiene y Cosméticos",
+      "icona": "🧴",
+      "esenzione_temporanea": {
+        "attiva": true,
+        "valido_fino": "2024-09-30",
+        "condizioni": "Devono essere in valigie separate",
+        "limite": "illimitato"
+      },
+      "articoli": [
+        {
+          "id": "prodotti_igiene",
+          "nome_it": "Prodotti per l'igiene personale e della casa",
+          "nome_es": "Productos de aseo personal y del hogar",
+          "sinonimi": ["sapone", "shampoo", "dentifricio", "detergente", "detersivo"],
+          "quantita_max": "illimitata (temporaneamente)",
+          "metodo_valorazione_normale": "peso/valore (miscellanee)",
+          "equivalenza_normale": "1 kg = 10 USD",
+          "note": "TEMPORANEAMENTE ESENTI da limiti e pagamento fino al 30/09/2024 (data soggetta a proroghe). Devono essere in valigie separate dal resto del bagaglio.",
+          "fonte": "Resolución 211/2024, Resolución 175/2022"
+        },
+        {
+          "id": "cosmetici_profumi",
+          "nome_it": "Cosmetici, profumi, prodotti di bellezza",
+          "nome_es": "Cosméticos, perfumes, productos de belleza",
+          "sinonimi": ["trucco", "profumo", "makeup", "crema"],
+          "metodo_valorazione": "secondo listino",
+          "note": "Include profumi, trucco, articoli per la cura personale",
+          "fonte": "Resolución 175/2022, Capitolo 2"
+        }
+      ]
+    },
+    {
+      "id": "alimenti",
+      "nome_it": "Alimenti",
+      "nome_es": "Alimentos",
+      "icona": "🍲",
+      "esenzione_temporanea": {
+        "attiva": true,
+        "valido_fino": "2024-09-30",
+        "condizioni": "Devono essere in valigie separate",
+        "limite": "illimitato"
+      },
+      "articoli": [
+        {
+          "id": "alimenti_generici",
+          "nome_it": "Alimenti (tutti i tipi)",
+          "nome_es": "Alimentos (todos los tipos)",
+          "sinonimi": ["cibo", "pasta", "riso", "conserve", "scatolame"],
+          "quantita_max": "illimitata (temporaneamente)",
+          "metodo_valorazione_normale": "peso/valore (miscellanee)",
+          "equivalenza_normale": "1 kg = 10 USD",
+          "note": "TEMPORANEAMENTE ESENTI da limiti e pagamento fino al 30/09/2024 (data soggetta a proroghe). Devono essere in valigie separate dal resto del bagaglio.",
+          "importante": "Alcuni prodotti di origine animale hanno restrizioni specifiche",
+          "fonte": "Resolución 211/2024, Resolución 175/2022"
+        },
+        {
+          "id": "prodotti_carne",
+          "nome_it": "Prodotti a base di carne",
+          "nome_es": "Productos cárnicos",
+          "sinonimi": ["carne", "salumi", "insaccati"],
+          "condizioni_speciali": "Prodotti semi-cotti o semi-elaborati (hamburger, polpette, bastoncini, nugget) devono essere sottovuoto e di bovini, suini, ovini e caprini",
+          "note": "Prodotti a base di carne hanno regolamentazioni specifiche",
+          "fonte": "Resolución 175/2022, normative sanitarie"
+        }
+      ]
+    },
+    {
+      "id": "medicinali",
+      "nome_it": "Medicinali e Dispositivi Medici",
+      "nome_es": "Medicamentos y Dispositivos Médicos",
+      "icona": "💊",
+      "esenzione_temporanea": {
+        "attiva": true,
+        "valido_fino": "2024-09-30",
+        "condizioni": "Devono essere in valigie separate, in confezioni originali",
+        "limite": "illimitato"
+      },
+      "articoli": [
+        {
+          "id": "medicinali_generici",
+          "nome_it": "Medicinali e farmaci",
+          "nome_es": "Medicamentos y fármacos",
+          "sinonimi": ["medicine", "farmaci", "pillole", "compresse"],
+          "quantita_max": "illimitata (temporaneamente)",
+          "quantita_normale": "10 kg",
+          "note": "TEMPORANEAMENTE ESENTI da limiti e pagamento fino al 30/09/2024 (data soggetta a proroghe). Devono essere in confezioni originali e in valigie separate dal resto del bagaglio. In condizioni normali il limite è 10 kg.",
+          "fonte": "Resolución 211/2024, Resolución 204/2024"
+        },
+        {
+          "id": "dispositivi_medici",
+          "nome_it": "Dispositivi e forniture mediche",
+          "nome_es": "Insumos médicos",
+          "sinonimi": ["garze", "bende", "siringhe", "dispositivi medici"],
+          "quantita_max": "illimitata (temporaneamente)",
+          "note": "TEMPORANEAMENTE ESENTI da limiti e pagamento fino al 30/09/2024. Devono essere in confezioni originali.",
+          "fonte": "Resolución 211/2024, Resolución 204/2024"
+        },
+        {
+          "id": "medicinali_prescrizione",
+          "nome_it": "Medicinali con prescrizione medica",
+          "nome_es": "Medicamentos con receta médica",
+          "sinonimi": ["farmaci prescritti", "medicine con ricetta"],
+          "documentazione_richiesta": true,
+          "documenti": [
+            "Certificato o prescrizione medica firmata e timbrata",
+            "Nome del paziente",
+            "Nome commerciale e generico del medicinale",
+            "Concentrazione e forma farmaceutica",
+            "Quantità prescritta in unità",
+            "Timbro ufficiale dell'istituzione emittente"
+          ],
+          "note": "Per medicinali che richiedono prescrizione medica, è necessario presentare documentazione appropriata",
+          "fonte": "Normative sanitarie cubane"
+        }
+      ]
+    }
+  ],
+
+  "articoli_proibiti": {
+    "descrizione": "Lista di articoli la cui importazione è VIETATA a Cuba",
+    "lista": [
+      {
+        "categoria": "Sostanze illegali",
+        "articoli": [
+          "Droga e stupefacenti",
+          "Sostanze psicotrope o allucinogene",
+          "Sostanze precursori"
+        ]
+      },
+      {
+        "categoria": "Materiali pericolosi",
+        "articoli": [
+          "Esplosivi",
+          "Emoderivati (prodotti derivati dal sangue)"
+        ]
+      },
+      {
+        "categoria": "Comunicazioni non autorizzate",
+        "articoli": [
+          "Walkie-talkie",
+          "GPS (dispositivi GPS autonomi)",
+          "Telefoni satellitari"
+        ]
+      },
+      {
+        "categoria": "Contenuti illegali",
+        "articoli": [
+          "Letteratura, articoli e oggetti osceni o pornografici",
+          "Materiale che attenta agli interessi generali della nazione"
+        ]
+      },
+      {
+        "categoria": "Elettrodomestici specifici",
+        "articoli": [
+          "Cucine e fornelli elettrici (ECCETTO quelli a induzione vitroceramica fino a 1500 watts)",
+          "Forni elettrici di qualsiasi tipo (ECCETTO forni a microonde fino a 2000 watts)"
+        ]
+      },
+      {
+        "categoria": "Beni culturali",
+        "articoli": [
+          "Beni culturali dichiarati Patrimonio Culturale della Nazione (all'esportazione)",
+          "Libri manoscritti, incunaboli (1440-1500)",
+          "Libri con timbri di biblioteche del Sistema Nazionale"
+        ]
+      },
+      {
+        "categoria": "Fauna",
+        "articoli": [
+          "Aragosta in qualsiasi quantità e forma (all'esportazione)"
+        ]
+      },
+      {
+        "categoria": "Altro",
+        "articoli": [
+          "Articoli nascosti per eludere il controllo doganale",
+          "Denaro contante e valori di qualsiasi tipo (nei pacchi postali)",
+          "Articoli il cui valore supera il limite stabilito per le spedizioni"
+        ]
+      }
+    ],
+    "nota": "L'importazione di droni richiede autorizzazione preventiva dall'autorità aeronautica",
+    "fonte": "Resolución 175/2022, Anexo IV - sito aduana.gob.cu"
+  },
+
+  "canali_doganali": {
+    "corsia_verde": {
+      "nome": "🟢 Corsia Verde - Nulla da Dichiarare",
+      "nome_originale": "Canal Verde",
+      "quando_usarla": "Quando NON hai nulla da dichiarare",
+      "requisiti": [
+        "Bagaglio non superiore a 30 kg totali",
+        "Include effetti personali (max 25 kg)",
+        "Nessun articolo regolamentato o proibito",
+        "Medicinali, alimenti e prodotti igiene in valigie separate (se presenti)",
+        "Nessun articolo che richieda pagamento di dazi"
+      ],
+      "controllo": "Possibile ispezione fisica a discrezione della dogana (anche se non hai nulla da dichiarare)"
+    },
+    "corsia_rossa": {
+      "nome": "🔴 Corsia Rossa - Dichiarare",
+      "nome_originale": "Canal Rojo",
+      "quando_usarla": "Quando DEVI dichiarare merci o pagare dazi",
+      "obbligatorio_se": [
+        "Bagaglio superiore a 30 kg",
+        "Stai facendo l'importazione annuale (se sei residente)",
+        "Sei turista e superi il limite di peso",
+        "Porti articoli che richiedono permessi speciali",
+        "Superi il valore di 1000 USD"
+      ],
+      "pagamento": "In pesos cubani (CUP)",
+      "controllo": "Ispezione fisica OBBLIGATORIA delle valigie"
+    }
+  },
+
+  "tariffe_importazione": {
+    "descrizione": "Tariffe applicate per importazioni che superano i limiti esenti",
+    "prima_importazione_anno": {
+      "descrizione": "Per residenti permanenti, nella prima importazione dell'anno",
+      "fino_50_usd": {
+        "percentuale": 0,
+        "descrizione": "Primi 50 USD esenti"
+      },
+      "da_51_a_500_usd": {
+        "percentuale": 100,
+        "descrizione": "Si paga il 100% del valore"
+      },
+      "da_501_a_1000_usd": {
+        "percentuale": 200,
+        "descrizione": "Si paga il 200% del valore"
+      }
+    },
+    "importazioni_successive": {
+      "descrizione": "Dalla seconda importazione in poi per residenti, o per tutti i turisti",
+      "da_1_a_50_usd": {
+        "percentuale": 0,
+        "descrizione": "Primi 50 USD esenti"
+      },
+      "da_51_a_500_usd": {
+        "percentuale": 100,
+        "descrizione": "Si paga il 100% del valore totale"
+      },
+      "da_501_a_1000_usd": {
+        "percentuale": 200,
+        "descrizione": "Si paga il 200% del valore totale"
+      }
+    },
+    "nota": "I pagamenti si effettuano in pesos cubani (CUP)"
+  },
+
+  "formulari_obbligatori": {
+    "dviajeros": {
+      "nome": "D'Viajeros",
+      "descrizione": "Formulario digitale obbligatorio per tutti i viaggiatori che entrano a Cuba",
+      "url": "https://dviajeros.mitrans.gob.cu/",
+      "app_android": "Disponibile su Google Play",
+      "quando_compilare": "Tra 72 e 48 ore prima dell'arrivo",
+      "lingue": ["Spagnolo", "Inglese", "Francese", "Russo", "Tedesco", "Cinese", "Italiano"],
+      "sostituisce": [
+        "Carta internazionale di imbarco/sbarco",
+        "Dichiarazione doganale",
+        "Dichiarazione sanitaria"
+      ],
+      "output": "Codice QR da mostrare ai controlli (digitale o stampato)",
+      "obbligatorio": true
+    }
+  },
+
+  "link_utili": {
+    "dogana_cuba": {
+      "nome": "Aduana General de la República de Cuba",
+      "url": "https://www.aduana.gob.cu/",
+      "descrizione": "Sito ufficiale della dogana cubana"
+    },
+    "gaceta_oficial": {
+      "nome": "Gaceta Oficial de Cuba",
+      "url": "https://www.gacetaoficial.gob.cu/",
+      "descrizione": "Bollettino ufficiale delle leggi cubane"
+    },
+    "formulario_dviajeros": {
+      "nome": "Formulario D'Viajeros",
+      "url": "https://dviajeros.mitrans.gob.cu/",
+      "descrizione": "Formulario digitale obbligatorio per ingresso a Cuba"
+    }
+  },
+
+  "note_finali": {
+    "aggiornamenti": "Le normative doganali cubane vengono aggiornate periodicamente. Verificare sempre sul sito ufficiale della dogana per le informazioni più recenti.",
+    "proroghe": "Le esenzioni temporanee per medicinali, alimenti e prodotti per l'igiene sono state prorogate più volte dal 2021. La data di scadenza attuale è soggetta a ulteriori proroghe.",
+    "consiglio": "In caso di dubbi su articoli specifici, contattare l'ambasciata o il consolato cubano prima del viaggio."
+  }
+}

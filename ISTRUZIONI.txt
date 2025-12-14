@@ -1,0 +1,110 @@
+╔═══════════════════════════════════════════════════════════════╗
+║              🇨🇺 DOGANA CUBA - PWA PROTOTIPO                  ║
+╚═══════════════════════════════════════════════════════════════╝
+
+✅ COMPLETATO! La tua PWA è pronta!
+
+📦 COSA HAI:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ Progressive Web App completa
+✓ Database con 70+ articoli dogana
+✓ Guida completa viaggiatore (elettricità, SIM, moneta, trasporti, emergenze)
+✓ Motore di ricerca intelligente
+✓ Funzionamento offline
+✓ Installabile su Android/iOS
+✓ Design mobile-first professionale
+
+📱 COME TESTARE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OPZIONE 1 - Test Locale (Immediato):
+───────────────────────────────────────
+1. Estrai il file dogana-cuba-pwa.zip
+2. Apri il terminale nella cartella estratta
+3. Esegui: python3 -m http.server 8000
+4. Apri browser: http://localhost:8000
+5. Dal telefono: http://[tuo-ip]:8000
+
+OPZIONE 2 - GitHub Pages (Gratis Forever):
+───────────────────────────────────────────
+1. Crea repository su github.com
+2. Carica tutti i file estratti
+3. Settings → Pages → Deploy from branch "main"
+4. Dopo 2-3 minuti sarà online!
+5. URL: https://tuousername.github.io/repo-name/
+
+OPZIONE 3 - Netlify (Più Facile):
+──────────────────────────────────
+1. Vai su netlify.com (registrazione gratis)
+2. Drag & drop la cartella estratta
+3. Fatto! URL automatico tipo: random-name.netlify.app
+
+🚀 COME INSTALLARE SU TELEFONO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Android (Chrome):
+─────────────────
+1. Apri il sito da Chrome
+2. Menu (⋮) → "Aggiungi a schermata Home"
+3. L'icona apparirà come un'app normale
+4. Funziona anche offline!
+
+iOS (Safari):
+─────────────
+1. Apri il sito da Safari
+2. Pulsante Condividi
+3. "Aggiungi a Home"
+4. Done!
+
+🔍 TEST DEL MOTORE DI RICERCA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Prova a cercare:
+• computer → troverà laptop, tablet, PC
+• telefono → troverà smartphone, cellulari
+• frigo → troverà frigorifero
+• medicine → troverà medicinali
+• drone → ti dirà che serve autorizzazione
+• cucina → ti dirà quali sono vietate
+
+📂 FILE INCLUSI:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ index.html                   → Pagina principale
+✓ app.js                       → Logica e ricerca
+✓ aduana_cuba_db.json          → Database regole doganali
+✓ guida_viaggiatore_cuba.json  → Guida pratica viaggiatore
+✓ manifest.json                → Config PWA
+✓ sw.js                        → Service Worker (offline)
+✓ icon-192.png                 → Icona piccola
+✓ icon-512.png                 → Icona grande
+✓ README.md                    → Documentazione completa
+
+🎯 PROSSIMI PASSI:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Testa l'app
+2. ✅ Installala sul telefono
+3. ✅ Verifica che funzioni offline
+4. Se tutto OK → Deploy su GitHub Pages/Netlify
+5. (Opzionale) Converti in APK con Capacitor
+
+💡 SUGGERIMENTI:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Il database è in aduana_cuba_db.json → facilissimo da aggiornare
+• Per cambiare colori: modifica le variabili CSS in index.html
+• Per aggiornare dati: modifica il JSON e cambia versione in sw.js
+
+🆘 PROBLEMI COMUNI:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+❌ "Non funziona in locale"
+   → Serve un server HTTP, non aprire index.html direttamente
+
+❌ "Le modifiche non si vedono"
+   → Cancella cache browser o cambia versione in sw.js
+
+❌ "Non si installa su telefono"
+   → Deve essere su HTTPS (localhost va bene per test)
+
+📞 SUPPORTO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Leggi README.md per documentazione completa!
+
+Buon viaggio a Cuba! 🇨🇺✈️

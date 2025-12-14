@@ -1,0 +1,28 @@
+{
+  "name": "Dogana Cuba - Guida Completa",
+  "short_name": "Dogana Cuba",
+  "description": "Guida completa alle importazioni non commerciali a Cuba. Scopri cosa puoi portare e in che quantità.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F0F9FF",
+  "theme_color": "#06B6D4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["travel", "utilities", "reference"],
+  "screenshots": [],
+  "lang": "it",
+  "dir": "ltr"
+}

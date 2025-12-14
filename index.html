@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#06B6D4">
+    <meta name="description" content="Guida completa alla dogana cubana - Scopri cosa puoi portare a Cuba">
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <title>Dogana Cuba - Guida Completa</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #06B6D4;
+            --primary-dark: #0891B2;
+            --secondary: #EC4899;
+            --bg-light: #F0F9FF;
+            --bg-white: #FFFFFF;
+            --text-dark: #0F172A;
+            --text-gray: #64748B;
+            --border: #E2E8F0;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .header .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        /* Search Box */
+        .search-container {
+            background: white;
+            padding: 20px;
+            margin: 0 20px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 16px 50px 16px 20px;
+            font-size: 16px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-gray);
+            font-size: 20px;
+        }
+        
+        .clear-search {
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--text-gray);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .clear-search.visible {
+            display: flex;
+        }
+        
+        /* Content */
+        .container {
+            padding: 0 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Info Cards */
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .info-card h2 {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-card p {
+            color: var(--text-gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .info-list {
+            list-style: none;
+            margin-top: 12px;
+        }
+        
+        .info-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .info-list li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        /* Result Card */
+        .result-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .result-card h3 {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .result-card .category {
+            display: inline-block;
+            background: var(--bg-light);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .quantity-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--success);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 12px 0;
+        }
+        
+        .result-card .note {
+            background: var(--bg-light);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-top: 12px;
+        }
+        
+        .result-card .important {
+            background: #FEF3C7;
+            color: #92400E;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-top: 12px;
+            border-left: 4px solid var(--warning);
+        }
+        
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-gray);
+        }
+        
+        .no-results-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .category-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .category-card:active {
+            transform: scale(0.95);
+        }
+        
+        .category-card .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .category-card .name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        /* Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px 16px;
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .nav-item.active {
+            color: var(--primary);
+        }
+        
+        .nav-item .icon {
+            font-size: 24px;
+        }
+        
+        .nav-item .label {
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Hidden */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            color: #92400E;
+            padding: 16px 20px;
+            margin: 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .alert-banner strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-gray);
+        }
+        
+        .spinner {
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>
+            🇨🇺 Dogana Cuba
+        </h1>
+        <div class="subtitle">Guida completa alle importazioni</div>
+    </div>
+    
+    <!-- Search -->
+    <div class="search-container">
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Cerca articolo... (es: computer, telefono)"
+                autocomplete="off"
+            >
+            <button class="clear-search" id="clearSearch">✕</button>
+            <span class="search-icon">🔍</span>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home View -->
+        <div id="homeView">
+            <!-- Alert -->
+            <div class="alert-banner">
+                <strong>⚠️ Nota Importante</strong>
+                Medicinali, alimenti e prodotti per l'igiene sono temporaneamente ILLIMITATI e GRATIS (fino al 30/09/2024, data soggetta a proroghe).
+            </div>
+            
+            <!-- Quick Info -->
+            <div class="info-card">
+                <h2>📋 Regole Principali</h2>
+                <ul class="info-list">
+                    <li>Limite totale: <strong>1000 USD</strong></li>
+                    <li>Effetti personali: <strong>25 kg gratis</strong></li>
+                    <li>Canale verde: fino a <strong>30 kg</strong></li>
+                    <li>Elettrodomestici: max <strong>2 dello stesso tipo</strong></li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h2>🚦 Corsie Doganali</h2>
+                <p style="margin-bottom: 12px;">All'aeroporto dovrai scegliere una corsia:</p>
+                <div style="background: #ECFDF5; padding: 12px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--success);">
+                    <strong>🟢 Corsia Verde - Nulla da Dichiarare</strong>
+                    <p style="font-size: 13px; margin-top: 4px; color: var(--text-gray);">
+                        Se hai solo effetti personali e bagaglio fino a 30 kg
+                    </p>
+                </div>
+                <div style="background: #FEF2F2; padding: 12px; border-radius: 8px; border-left: 4px solid var(--danger);">
+                    <strong>🔴 Corsia Rossa - Dichiarare</strong>
+                    <p style="font-size: 13px; margin-top: 4px; color: var(--text-gray);">
+                        Se superi 30 kg o devi pagare dazi
+                    </p>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h2>🔍 Come Funziona l'App</h2>
+                <p>
+                    Cerca un articolo nella barra di ricerca sopra (es: "computer", "telefono", "frigorifero") 
+                    per scoprire quanti ne puoi portare e le condizioni specifiche.
+                </p>
+            </div>
+            
+            <!-- Categories -->
+            <h2 style="margin: 24px 0 12px; font-size: 18px;">Categorie</h2>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+        
+        <!-- Search Results View -->
+        <div id="searchView" class="hidden">
+            <div id="searchResults"></div>
+        </div>
+        
+        <!-- Viaggiatore View -->
+        <div id="viaggiatoreView" class="hidden">
+            <div class="info-card">
+                <h2>✈️ Guida Pratica per il Viaggiatore</h2>
+                <p>Informazioni utili per viaggiare a Cuba</p>
+            </div>
+            
+            <!-- Le sezioni verranno caricate dinamicamente da app.js -->
+            <div id="viaggiatoreContent"></div>
+        </div>
+        
+        <!-- Info View -->
+        <div id="infoView" class="hidden">
+            <div class="info-card">
+                <h2>📱 Installazione App</h2>
+                <p>Questa è una Progressive Web App (PWA). Puoi installarla sul tuo telefono:</p>
+                <ul class="info-list">
+                    <li>Apri il menu del browser (⋮)</li>
+                    <li>Seleziona "Aggiungi alla schermata Home"</li>
+                    <li>L'app apparirà come icona sul telefono</li>
+                    <li>Funziona anche offline!</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h2>ℹ️ Informazioni</h2>
+                <p><strong>Versione:</strong> 2.1</p>
+                <p><strong>Ultimo aggiornamento:</strong> 08/12/2024</p>
+                <p style="margin-top: 12px;">
+                    Dati estratti da fonti ufficiali della Repubblica di Cuba:
+                </p>
+                <ul class="info-list">
+                    <li>Gaceta Oficial No. 57/2024</li>
+                    <li>Resolución 175/2022</li>
+                    <li>Resolución 211/2024</li>
+                    <li>aduana.gob.cu</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h2>🔗 Link Utili</h2>
+                <ul class="info-list">
+                    <li><a href="https://dviajeros.mitrans.gob.cu/" target="_blank" style="color: var(--primary);">Formulario D'Viajeros (OBBLIGATORIO)</a></li>
+                    <li><a href="https://www.aduana.gob.cu/" target="_blank" style="color: var(--primary);">Sito Ufficiale Dogana Cuba</a></li>
+                    <li><a href="https://www.gacetaoficial.gob.cu/" target="_blank" style="color: var(--primary);">Gaceta Oficial</a></li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h2>⚠️ Disclaimer</h2>
+                <p>
+                    Questa app è stata creata in modo indipendente utilizzando informazioni pubbliche ufficiali. 
+                    Non è affiliata con la dogana cubana. Le normative possono cambiare: verifica sempre sul sito ufficiale prima del viaggio.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active" data-view="home">
+            <div class="icon">🏠</div>
+            <div class="label">Home</div>
+        </a>
+        <a href="#" class="nav-item" data-view="search">
+            <div class="icon">🔍</div>
+            <div class="label">Cerca</div>
+        </a>
+        <a href="#" class="nav-item" data-view="viaggiatore">
+            <div class="icon">✈️</div>
+            <div class="label">Viaggiatore</div>
+        </a>
+        <a href="#" class="nav-item" data-view="info">
+            <div class="icon">ℹ️</div>
+            <div class="label">Info</div>
+        </a>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
